@@ -1,1 +1,72 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
 
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #101d6b;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+#dropdown-permisos {
+    position: relative;
+}
+
+#dropdown-toggle-permisos {
+    cursor: pointer;
+}
+
+#dropdown-menu-permisos {
+    position: absolute;
+    right: 0;
+    display: none;
+    background: white;
+    border-radius: 2px;
+    width: max-content;
+    top: 25px;
+    border: 1px solid grey;
+}
+
+#dropdown-menu-permisos.active {
+    display: block;
+}
+
+.permisos-dropdown-link {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#marcar-entrada {
+    background: lightgreen;
+}
+
+#marcar-salida {
+    background: lightcoral;
+}
