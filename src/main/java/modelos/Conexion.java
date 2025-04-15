@@ -24,7 +24,6 @@ public class Conexion {
            
         } catch (SQLException e) {
             System.err.println("❌ Error al conectar a la base de datos.");
-            
         }
         return con;
     }
