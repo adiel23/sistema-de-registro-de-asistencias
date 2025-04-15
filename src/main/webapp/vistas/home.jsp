@@ -7,7 +7,7 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>JSP Page</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../css/home.css">
 </head>
 <body>
