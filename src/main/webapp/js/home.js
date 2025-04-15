@@ -3,12 +3,20 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/JavaScript.js to edit this template
  */
 
-const dropdownTogglePermisos = document.getElementById("dropdown-toggle-permisos");
+const nav = document.getElementById("nav");
 
-const dropdownMenuPermisos = document.getElementById("dropdown-menu-permisos");
-
-dropdownTogglePermisos.addEventListener("click", () => {
-    dropdownMenuPermisos.classList.toggle("active");
+nav.addEventListener("click", (event) => {
+    const element = event.target;
+    console.log(element)
+    if (element.id === "leaves-dropdown-toggle") {
+        const dropdown = element.nextElementSibling;
+        console.log(dropdown);
+        dropdown.classList.toggle("active");
+    } else if (element.id === "attendance-history-dropdown-toggle"){
+        const dropdown = element.nextElementSibling;
+        console.log(dropdown);
+        dropdown.classList.toggle("active");
+    }
 });
 
 // vamos a agregar el fetch 

@@ -22,30 +22,31 @@ nav {
     text-decoration: none;
 }
 
-#dropdown-permisos {
+.dropdown {
     position: relative;
 }
 
-#dropdown-toggle-permisos {
+.dropdown-toggle {
     cursor: pointer;
 }
 
-#dropdown-menu-permisos {
+.dropdown-menu {
     position: absolute;
-    right: 0;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
     display: none;
     background: white;
     border-radius: 2px;
     width: max-content;
-    top: 25px;
     border: 1px solid grey;
 }
 
-#dropdown-menu-permisos.active {
+.dropdown-menu.active {
     display: block;
 }
 
-.permisos-dropdown-link {
+.dropdown-link {
     display: inline-block;
     text-decoration: none;
     color: black;

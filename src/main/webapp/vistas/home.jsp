@@ -17,15 +17,41 @@
             <h2>INSAM</h2>
         </div>
 
-        <nav>
+        <nav id='nav'>
             <a href="home.jsp" class="nav-link">Inicio</a>
-            <a href="historial.jsp" class="nav-link">Historial</a>
-            <div id="dropdown-permisos">
-                <p id='dropdown-toggle-permisos'>Permisos</p>
-                <div id="dropdown-menu-permisos">
-                    <a href='solicitar-permiso.jsp' class='permisos-dropdown-link'>Solicitar permiso</a>
+            
+            <div id="leaves-dropdown" class="dropdown">
+                <p id='leaves-dropdown-toggle' class="dropdown-toggle">Permisos</p>
+                
+                <div id="leaves-dropdown-menu" class='dropdown-menu'>
+                    <% 
+                        String rol = (String) session.getAttribute("rol");
+
+                        System.out.println("este es mi rol" + rol);
+
+                        if ("admin".equals(rol)) { %>
+                            <a href="" class="dropdown-link">Aprobar permisos</a>
+                            <br>
+                        <% }
+                    %>
+
+                    <a href='' class='dropdown-link'>Solicitar permiso</a>
                     <br>
-                    <a href='' class='permisos-dropdown-link'>Ver historial</a>
+                    
+                    <a href='' class='dropdown-link'>Ver historial</a>
+                </div>
+            </div>
+                    
+            <% if ("admin".equals(rol)) { %>
+                <a href="" class="nav-link">Manage Users</a>
+            <% } %>
+                    
+            <div id="attedance-history-dropdown" class="dropdown">
+                <p id="attendance-history-dropdown-toggle" class="dropdown-toggle">Historial de asistencia</p>
+               
+                <div id="attendance-history-dropdown-menu" class='dropdown-menu'>
+                    <a href="" class="dropdown-link">Personal</a> <br>
+                    <a href="" class='dropdown-link'>Usuarios</a> <br>
                 </div>
             </div>
         </nav>

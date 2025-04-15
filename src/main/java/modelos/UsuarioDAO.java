@@ -24,7 +24,7 @@ public class UsuarioDAO {
             ps.setString(2, password);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
-                usuario = new Usuario(rs.getInt("id"), rs.getString("usuario"), rs.getString("contrasenia"));
+                usuario = new Usuario(rs.getInt("id"), rs.getString("usuario"), rs.getString("contrasenia"), rs.getString("rol"));
                 System.out.println(usuario);
             }
         } 
