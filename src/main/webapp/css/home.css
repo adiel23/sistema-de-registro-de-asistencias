@@ -62,14 +62,16 @@ button {
     padding: 20px;
     border-radius: 20px;
     cursor: pointer;
+    color: white;
+    font-weight: bold;
 }
 
 #marcar-entrada {
-    background: lightgreen;
+    background: green;
 }
 
 #marcar-salida {
-    background: lightcoral;
+    background: red;
 }
 
 #message {

@@ -45,15 +45,20 @@
             <% if ("admin".equals(rol)) { %>
                 <a href="" class="nav-link">Manage Users</a>
             <% } %>
-                    
-            <div id="attedance-history-dropdown" class="dropdown">
-                <p id="attendance-history-dropdown-toggle" class="dropdown-toggle">Historial de asistencia</p>
-               
-                <div id="attendance-history-dropdown-menu" class='dropdown-menu'>
-                    <a href="" class="dropdown-link">Personal</a> <br>
-                    <a href="" class='dropdown-link'>Usuarios</a> <br>
+            
+            <% if ("admin".equals(rol)) { %>
+                <div id="attedance-history-dropdown" class="dropdown">
+                    <p id="attendance-history-dropdown-toggle" class="dropdown-toggle">Historial de Asistencia</p>
+
+                    <div id="attendance-history-dropdown-menu" class='dropdown-menu'>
+                        <a href="" class="dropdown-link">Personal</a> <br>
+                        <a href="" class='dropdown-link'>Usuarios</a> <br>
+                    </div>
                 </div>
-            </div>
+            <% } else { %>
+                    <a href="" class="nav-link">Historial de Asistencia</a>
+            <% } %>
+            
         </nav>
         
     </header>
@@ -83,15 +88,15 @@
 
         // Mostrar botón de marcar entrada
     %>
-        <button onclick="marcarEntrada()">Marcar Entrada</button>
+        <button onclick="marcarEntrada()" id='marcar-entrada'>Marcar Entrada</button>
     <% } else {
         Time horaEntrada = rs.getTime("hora_entrada");
         Time horaSalida = rs.getTime("hora_salida");
 
         if (horaEntrada == null) { %>
-            <button onclick="marcarEntrada()">Marcar Entrada</button>
+            <button onclick="marcarEntrada()" id="marcar-entrada">Marcar Entrada</button>
     <% } else if (horaSalida == null) { %>
-            <button onclick="marcarSalida()">Marcar Salida</button>
+            <button onclick="marcarSalida()" id='marcar-salida'>Marcar Salida</button>
     <% } else { %>
         <p id="message">Ya marcaste entrada y salida hoy.</p>
     <% }
