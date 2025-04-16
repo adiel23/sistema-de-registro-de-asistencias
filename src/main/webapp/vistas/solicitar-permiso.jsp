@@ -3,6 +3,7 @@
     Created on : 11 abr 2025, 7:32:24 a. m.
     Author     : leidy
 --%>
+<%@page import="modelos.Conexion"%>
 <%@ page import="java.sql.*, java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -11,10 +12,11 @@
     <meta charset="UTF-8">
     <title>Solicitar Permiso</title>
     <link rel="stylesheet" type="text/css" href="../css/solicitar-permiso.css">
+    <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
 
-<%
+    <%
     Integer idUsuario = (Integer) session.getAttribute("id");
     if (idUsuario == null) {
         response.sendRedirect("login.jsp");
@@ -28,9 +30,7 @@
 
     if (motivo != null && fechaInicio != null && fechaTermino != null) {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            Connection conn = DriverManager.getConnection(
-                "jdbc:mysql://localhost:3306/sistema_asistencia", "root", "24148289");
+            Connection conn = Conexion.getConnection();
 
             String sql = "INSERT INTO permisos (id_usuario, fecha_solicitud, motivo, fecha_inicio, fecha_termino) VALUES (?, NOW(), ?, ?, ?)";
             PreparedStatement stmt = conn.prepareStatement(sql);
@@ -56,16 +56,9 @@
     }
 %>
 
-<div class="navbar">
-    <h1>INSAM</h1>
-    <div>
-        <a href="home.jsp">Inicio</a>
-        <a href="#">Historial</a>
-        <a href="permisos.jsp">Permisos</a>
-    </div>
-</div>
+    <jsp:include page="header.jsp"/>
 
-<div class="container">
+    <div class="container">
     <div class="form-box">
         <h2>Solicitar Permiso</h2>
         <form method="post">
@@ -83,6 +76,8 @@
         <%= mensaje %>
     </div>
 </div>
+    
+    <script src="../js/home.js"> </script>
 
 </body>
 </html>
