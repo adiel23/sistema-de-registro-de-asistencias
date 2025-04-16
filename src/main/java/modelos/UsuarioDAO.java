@@ -17,25 +17,54 @@ public class UsuarioDAO {
     }
 
     // LISTAR todos los usuarios
+   // Método de tu rama actual
     public List<Usuario> listarUsuarios() throws SQLException {
         List<Usuario> lista = new ArrayList<>();
         String sql = "SELECT * FROM usuarios";
 
-        try (PreparedStatement stmt = con.prepareStatement(sql);
-             ResultSet rs = stmt.executeQuery()) {
+        try (PreparedStatement stmt = con.prepareStatement(sql)) {
+            ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
                 Usuario u = new Usuario();
                 u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("nombre"));
-                u.setUsuario(rs.getString("usuario"));
-                u.setContrasenia(rs.getString("contrasenia"));
-                u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                u.setName(rs.getString("nombre"));
+                u.setUsername(rs.getString("usuario"));
+                u.setPassword(rs.getString("contrasenia"));
+                u.setBirthDate(rs.getDate("fecha_nacimiento"));
                 u.setRol(rs.getString("rol"));
                 lista.add(u);
             }
         }
 
         return lista;
+    }
+
+    // Método que venía de master
+    public Usuario validarUsuario(String username, String password) {
+        Usuario usuario = null;
+        String sql = "SELECT * FROM usuarios WHERE usuario =? AND contrasenia=?";
+        System.out.println("Intentando validar usuario: " + username + " con contraseña: " + password);
+        
+        try (PreparedStatement ps = con.prepareStatement(sql))
+        { // Usamos la clase Conexion
+            
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                usuario = new Usuario();
+                usuario.setId(rs.getInt("id"));
+                usuario.setUsername(rs.getString("usuario"));
+                usuario.setPassword(rs.getString("contrasenia"));
+                usuario.setRol(rs.getString("rol"));
+                System.out.println(usuario);
+            }
+        } 
+        catch (Exception e) {
+             System.out.println("Error al validar usuario: " + e.getMessage());
+            // Imprime el error en la consola
+        }
+        return usuario; 
     }
 
     public Usuario obtenerPorCredenciales(String usuario, String contrasenia) throws SQLException {
@@ -47,10 +76,10 @@ public class UsuarioDAO {
             if (rs.next()) {
                 Usuario u = new Usuario();
                 u.setId(rs.getInt("id"));
-                u.setNombre(rs.getString("nombre"));
-                u.setUsuario(rs.getString("usuario"));
-                u.setContrasenia(rs.getString("contrasenia"));
-                u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                u.setName(rs.getString("nombre"));
+                u.setUsername(rs.getString("usuario"));
+                u.setPassword(rs.getString("contrasenia"));
+                u.setBirthDate(rs.getDate("fecha_nacimiento"));
                 u.setRol(rs.getString("rol"));
                 return u;
             }
@@ -70,10 +99,10 @@ public class UsuarioDAO {
             try (ResultSet rs = stmt.executeQuery()) {
                 if (rs.next()) {
                     u.setId(rs.getInt("id"));
-                    u.setNombre(rs.getString("nombre"));
-                    u.setUsuario(rs.getString("usuario"));
-                    u.setContrasenia(rs.getString("contrasenia"));
-                    u.setFechaNacimiento(rs.getDate("fecha_nacimiento"));
+                    u.setName(rs.getString("nombre"));
+                    u.setUsername(rs.getString("usuario"));
+                    u.setPassword(rs.getString("contrasenia"));
+                    u.setBirthDate(rs.getDate("fecha_nacimiento"));
                     u.setRol(rs.getString("rol"));
                 }
             }
@@ -87,10 +116,10 @@ public class UsuarioDAO {
         String sql = "INSERT INTO usuarios (nombre, usuario, contrasenia, fecha_nacimiento, rol) VALUES (?, ?, ?, ?, ?)";
 
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, u.getNombre());
-            stmt.setString(2, u.getUsuario());
-            stmt.setString(3, u.getContrasenia());
-            stmt.setDate(4, u.getFechaNacimiento());
+            stmt.setString(1, u.getName());
+            stmt.setString(2, u.getUsername());
+            stmt.setString(3, u.getPassword());
+            stmt.setDate(4, u.getBirthDate());
             stmt.setString(5, u.getRol());
             stmt.executeUpdate();
         }
@@ -101,10 +130,10 @@ public class UsuarioDAO {
         String sql = "UPDATE usuarios SET nombre=?, usuario=?, contrasenia=?, fecha_nacimiento=?, rol=? WHERE id=?";
 
         try (PreparedStatement stmt = con.prepareStatement(sql)) {
-            stmt.setString(1, u.getNombre());
-            stmt.setString(2, u.getUsuario());
-            stmt.setString(3, u.getContrasenia());
-            stmt.setDate(4, u.getFechaNacimiento());
+            stmt.setString(1, u.getName());
+            stmt.setString(2, u.getUsername());
+            stmt.setString(3, u.getPassword());
+            stmt.setDate(4, u.getBirthDate());
             stmt.setString(5, u.getRol());
             stmt.setInt(6, u.getId());
             stmt.executeUpdate();

@@ -10,11 +10,23 @@ import java.sql.Date;
 
 public class Usuario {
     private int id;
-    private String nombre;
-    private String usuario;
-    private String contrasenia;
+    private String name;
+    private String username;
+    private String password;
     private String rol;
-    private Date fechaNacimiento;
+    private Date birthDate;
+    
+    public Usuario() {
+    }
+    
+    public Usuario(int id, String name, String username, String password, String rol, Date birthDate) {
+        this.id = id;
+        this.name = name;
+        this.username = username;
+        this.password = password;
+        this.rol = rol;
+        this.birthDate = birthDate;
+    }
 
     // Getters y Setters
     public int getId() {
@@ -24,38 +36,30 @@ public class Usuario {
         this.id = id;
     }
 
-    public String getNombre() {
-        return nombre;
+    public String getName() {
+        return name;
     }
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public String getUsuario() {
-        return usuario;
-    }
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public String getContrasenia() {
-        return contrasenia;
+    public String getUsername() {
+        return username;
     }
-    public void setContrasenia(String contrasenia) {
-        this.contrasenia = contrasenia;
-    }
-
-    public String getRol() {
-        return rol;
-    }
-    public void setRol(String rol) {
-        this.rol = rol;
+    public void setUsername(String username){
+        this.username = username;
     }
 
-    public Date getFechaNacimiento() {
-        return fechaNacimiento;
+    public Date getBirthDate() {
+        return birthDate;
     }
-    public void setFechaNacimiento(Date fechaNacimiento) {
-        this.fechaNacimiento = fechaNacimiento;
+    public void setBirthDate(Date birthDate) {
+        this.birthDate = birthDate;
     }
+
+    public String getPassword() { return password; }
+    public void setPassword(String password) { this.password = password; }
+    
+    public String getRol() {return rol;}
+    public void setRol(String rol) {this.rol = rol;}
 }

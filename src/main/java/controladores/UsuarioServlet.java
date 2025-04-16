@@ -6,7 +6,6 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;
-import java.sql.Connection;
 import java.util.List;
 import modelos.Usuario;
 import modelos.UsuarioDAO;
@@ -60,11 +59,11 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
 
         try {
             Usuario usuario = new Usuario();
-            usuario.setNombre(request.getParameter("nombre"));
-            usuario.setUsuario(request.getParameter("usuario"));
-            usuario.setContrasenia(request.getParameter("contrasenia"));
+            usuario.setName(request.getParameter("nombre"));
+            usuario.setUsername(request.getParameter("usuario"));
+            usuario.setPassword(request.getParameter("contrasenia"));
             usuario.setRol(request.getParameter("rol"));
-            usuario.setFechaNacimiento(java.sql.Date.valueOf(request.getParameter("fechaNacimiento")));
+            usuario.setBirthDate(java.sql.Date.valueOf(request.getParameter("fechaNacimiento")));
 
             if ("agregar".equals(accion)) {
                 dao.agregarUsuario(usuario);

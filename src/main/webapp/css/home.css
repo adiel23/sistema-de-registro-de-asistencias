@@ -1,0 +1,83 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box
+}
+
+header {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    background: #101d6b;
+    color: white;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-toggle {
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+    background: white;
+    border-radius: 2px;
+    width: max-content;
+    border: 1px solid grey;
+}
+
+.dropdown-menu.active {
+    display: block;
+}
+
+.dropdown-link {
+    display: inline-block;
+    text-decoration: none;
+    color: black;
+    cursor: pointer;
+    padding: 10px;
+}
+
+button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+}
+
+#marcar-entrada {
+    background: green;
+}
+
+#marcar-salida {
+    background: red;
+}
+
+#message {
+    font-size: 50px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
