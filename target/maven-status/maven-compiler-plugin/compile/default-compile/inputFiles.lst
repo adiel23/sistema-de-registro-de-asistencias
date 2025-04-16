@@ -1,6 +1,7 @@
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\com\mycompany\proyecto\JakartaRestConfiguration.java
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\com\mycompany\proyecto\resources\JakartaEE10Resource.java
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\modelos\Conexion.java
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\modelos\Usuario.java
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\contoladores\LoginServlet.java
-C:\Users\arthu\OneDrive\Desktop\modulo 3.2\proyecto\src\main\java\modelos\UsuarioDAO.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\modelos\Conexion.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\com\mycompany\proyecto\resources\JakartaEE10Resource.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\controladores\LoginServlet.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\controladores\UsuarioServlet.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\modelos\Usuario.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\com\mycompany\proyecto\JakartaRestConfiguration.java
+C:\Users\javier\sistema-de-registro-de-asistencias\src\main\java\modelos\UsuarioDAO.java

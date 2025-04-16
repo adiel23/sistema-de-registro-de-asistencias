@@ -1,3 +1,5 @@
+//Conexion.java
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
@@ -11,7 +13,7 @@ import java.sql.SQLException;
 public class Conexion {
     private static final String URL = "jdbc:mysql://localhost:3306/sistema_asistencia";
     private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "123456789";
 
     public static Connection getConnection() {
         Connection con = null;
@@ -19,13 +21,12 @@ public class Conexion {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver"); // Asegúrate de usar el driver correcto
             con = DriverManager.getConnection(URL, USER, PASSWORD);
-        } catch (ClassNotFoundException e) {
-            System.err.println("❌ Error: Driver de MySQL no encontrado.");
-           
-        } catch (SQLException e) {
-            System.err.println("❌ Error al conectar a la base de datos.");
-            
-        }
+       } catch (ClassNotFoundException e) {
+           System.err.println("❌ Error: Driver de MySQL no encontrado. " + e.getMessage());
+       } catch (SQLException e) {
+           System.err.println("❌ Error al conectar a la base de datos: " + e.getMessage());
+}
+
         return con;
     }
 }

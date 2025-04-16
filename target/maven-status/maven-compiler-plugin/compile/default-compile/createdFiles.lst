@@ -1,6 +1,7 @@
 modelos\UsuarioDAO.class
+controladores\UsuarioServlet.class
 modelos\Usuario.class
 modelos\Conexion.class
-contoladores\LoginServlet.class
+controladores\LoginServlet.class
 com\mycompany\proyecto\JakartaRestConfiguration.class
 com\mycompany\proyecto\resources\JakartaEE10Resource.class
