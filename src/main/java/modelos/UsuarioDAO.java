@@ -17,7 +17,7 @@ public class UsuarioDAO {
     public Usuario validarUsuario(String username, String password) {
         Usuario usuario = null;
         System.out.println("Intentando validar usuario: " + username + " con contraseña: " + password);
-        try (Connection con = Conexion.getConnection())
+        try (Connection con = Conexion.getconnection())
         { // Usamos la clase Conexion
             PreparedStatement ps = con.prepareStatement("SELECT * FROM usuarios WHERE usuario =? AND contrasenia=?");
             ps.setString(1, username);

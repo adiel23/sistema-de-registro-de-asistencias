@@ -13,7 +13,7 @@ public class Conexion {
     private static final String USER = "root";
     private static final String PASSWORD = "1234";
 
-    public static Connection getConnection() {
+    public static Connection getconnection() {
         Connection con = null;
         System.out.println("ejecutando conexion");
         try {
@@ -28,5 +28,6 @@ public class Conexion {
         }
         return con;
     }
+
 }
 
