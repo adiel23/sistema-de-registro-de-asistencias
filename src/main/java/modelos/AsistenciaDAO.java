@@ -25,7 +25,7 @@ public class AsistenciaDAO {
     public AsistenciaDAO() {
         try {
             this.conexion = new Conexion();
-            this.con = conexion.getconnection();
+            this.con = conexion.getConnection();
             
             if (this.con == null) {
                 LOGGER.log(Level.SEVERE, "Error: No se pudo establecer conexión con la base de datos.");

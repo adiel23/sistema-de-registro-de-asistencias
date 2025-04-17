@@ -28,11 +28,12 @@ public class LoginServlet extends HttpServlet {
         
         if (usuario != null) {
             HttpSession session = request.getSession();
-            session.setAttribute("usuario", usuario.getUsername());
-            response.sendRedirect("home.jsp");
+            session.setAttribute("id", usuario.getId());
+            session.setAttribute("rol", usuario.getRol());
+            
+            response.sendRedirect("vistas/home.jsp");
         } else {
-            response.sendRedirect("login.jsp?error=1");
+            response.sendRedirect("vistas/login.jsp?error=1");
         }
     }
 }
-
