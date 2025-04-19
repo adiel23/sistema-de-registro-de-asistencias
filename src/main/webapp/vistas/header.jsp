@@ -16,7 +16,7 @@
                         System.out.println("este es mi rol" + rol);
 
                         if ("admin".equals(rol)) { %>
-                            <a href="aprobar-permisos.jsp" class="dropdown-link">Aprobar permisos</a>
+                            <a href="/proyecto/MostrarPermisosServlet" class="dropdown-link">Aprobar permisos</a>
                             <br>
                         <% }
                     %>
@@ -24,7 +24,7 @@
                     <a href='solicitar-permiso.jsp' class='dropdown-link'>Solicitar permiso</a>
                     <br>
                     
-                    <a href='' class='dropdown-link'>Ver historial</a>
+                    <a href='' class='dropdown-link'>Mi historial</a>
                 </div>
             </div>
                     

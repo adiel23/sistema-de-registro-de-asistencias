@@ -13,3 +13,16 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     box-sizing: border-box;
 }
 
+#title {
+    margin: 20px 0;
+    text-align: center;
+}
+
+table {
+    margin: auto;
+}
+
+th, td {
+    padding: 10px;
+}
+
