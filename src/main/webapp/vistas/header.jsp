@@ -16,7 +16,7 @@
                         System.out.println("este es mi rol" + rol);
 
                         if ("admin".equals(rol)) { %>
-                            <a href="<%= request.getContextPath()%>/MostrarPermisosServlet" class="dropdown-link">Aprobar permisos</a>
+                            <a href="<%= request.getContextPath()%>/MostrarPermisosPendientesServlet" class="dropdown-link">Aprobar permisos</a>
                             <br>
                         <% }
                     %>

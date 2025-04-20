@@ -11,8 +11,9 @@
 <head>
     <meta charset="UTF-8">
     <title>Solicitar Permiso</title>
-    <link rel="stylesheet" type="text/css" href="../css/solicitar-permiso.css">
-    <link rel="stylesheet" href="../css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath()%>/css/header.css">
+    <link rel="stylesheet" type="text/css" href="<%= request.getContextPath()%>/css/solicitar-permiso.css">
+
 </head>
 <body>
 

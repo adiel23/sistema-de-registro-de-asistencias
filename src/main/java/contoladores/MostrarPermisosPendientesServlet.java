@@ -22,8 +22,8 @@ import modelos.Permiso;
  *
  * @author arthu
  */
-@WebServlet(name = "MostrarPermisosServlet", urlPatterns = {"/MostrarPermisosServlet"})
-public class MostrarPermisosServlet extends HttpServlet {
+@WebServlet(name = "MostrarPermisosPendientesServlet", urlPatterns = {"/MostrarPermisosPendientesServlet"})
+public class MostrarPermisosPendientesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

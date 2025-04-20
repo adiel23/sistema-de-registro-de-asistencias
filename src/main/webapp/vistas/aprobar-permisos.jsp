@@ -3,8 +3,9 @@
 <html>
 <head>
     <title>Permisos</title>
-    <link rel="stylesheet" href="/proyecto/css/aprobar-permisos.css">
-    <link rel="stylesheet" href="/proyecto/css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/aprobar-permisos.css">
+    <script src="https://kit.fontawesome.com/7792cd81ab.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <jsp:include page="header.jsp" />
@@ -12,7 +13,7 @@
     <table border="1">
         <tr>
             <th>ID</th>
-            <th>ID Usuario</th>
+            <th>Nombre</th>
             <th>Fecha Solicitud</th>
             <th>Motivo</th>
             <th>Fecha Inicio</th>
@@ -39,36 +40,21 @@
                         <td><%= p.getFechaTermino() %></td>
                         <td id="estado-<%= p.getId() %>"><%= p.getEstado() %></td>
                         <td>
-                            <button id="aprobar-<%= p.getId() %>" onclick="actualizarEstado(<%= p.getId() %>, 'aprobado')" <%= p.getEstado().equals("pendiente") ? "" : "disabled" %>>Aprobar</button>
-                            <button id="rechazar-<%= p.getId() %>" onclick="actualizarEstado(<%= p.getId() %>, 'rechazado')" <%= p.getEstado().equals("pendiente") ? "" : "disabled" %>>Rechazar</button>
+                            <button class="aprobar-permiso-btn" id="aprobar-<%= p.getId() %>" onclick="actualizarEstado(<%= p.getId() %>, 'aprobado')" <%= p.getEstado().equals("pendiente") ? "" : "disabled" %> >Aprobar</button>
+                            <button class="rechazar-permiso-btn" id="rechazar-<%= p.getId() %>" onclick="actualizarEstado(<%= p.getId() %>, 'rechazado')" <%= p.getEstado().equals("pendiente") ? "" : "disabled" %>>Rechazar</button>
                         </td>
                     </tr>
                 <% }
             } %>
             
     </table>
+            
+    <div id="view-history-container">
+        <i class="fa-solid fa-eye" id="view-history-button"></i>
+    </div>
     
-    <script src="/proyecto/js/home.js"> </script>
-    <script>
-        function actualizarEstado(id, estado) {
-            fetch('ActualizarPermisoServlet', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-              body: 'id=' + id + '&estado=' + estado
-            })
-            .then(response => response.text())
-            .then(data => {
-              if (data === 'ok') {
-                // Ocultar o eliminar la fila de la tabla
-                const fila = document.getElementById('permiso-' + id);
-                fila.remove(); // O podrías usar fila.style.display = 'none';
-              } else {
-                alert('Error al actualizar el estado');
-              }
-            })
-            .catch(err => console.error('Error en la solicitud AJAX:', err));
-        }
-    </script>
+    <script src="<%= request.getContextPath()%>/js/home.js"> </script>
+    <script src='<%= request.getContextPath()%>/js/aprobar-permisos.js'></script>
 </body>
 </html>
 

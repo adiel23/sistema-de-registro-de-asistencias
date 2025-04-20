@@ -7,12 +7,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : arthu
 */
 
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
 #title {
     margin: 20px 0;
     text-align: center;
@@ -26,3 +20,42 @@ th, td {
     padding: 10px;
 }
 
+#view-history-container {
+    position: absolute;
+    top: 90px;
+    right: 30px;
+}
+
+#view-history-button {
+    font-size: 30px;
+    transition: transform .2s ease;
+    cursor: pointer;
+}
+
+#view-history-button:hover {
+    transform: scale(1.5);
+}
+
+button {
+    padding: 10px;
+    border-radius: 10px;
+    color: white;
+    cursor: pointer;
+}
+
+.aprobar-permiso-btn {
+    background: green;
+}
+
+.aprobar-permiso-btn:hover {
+    background: greenyellow;
+    color: black;
+}
+
+.rechazar-permiso-btn {
+    background: red;
+}
+
+.rechazar-permiso-btn:hover {
+    background: coral;
+}
