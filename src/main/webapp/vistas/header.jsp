@@ -4,7 +4,7 @@
     </div>
 
     <nav id='nav'>
-            <a href="home.jsp" class="nav-link">Inicio</a>
+            <a href="<%= request.getContextPath()%>/vistas/home.jsp" class="nav-link">Inicio</a>
             
             <div id="leaves-dropdown" class="dropdown">
                 <p id='leaves-dropdown-toggle' class="dropdown-toggle">Permisos</p>
@@ -16,12 +16,12 @@
                         System.out.println("este es mi rol" + rol);
 
                         if ("admin".equals(rol)) { %>
-                            <a href="/proyecto/MostrarPermisosServlet" class="dropdown-link">Aprobar permisos</a>
+                            <a href="<%= request.getContextPath()%>/MostrarPermisosServlet" class="dropdown-link">Aprobar permisos</a>
                             <br>
                         <% }
                     %>
 
-                    <a href='solicitar-permiso.jsp' class='dropdown-link'>Solicitar permiso</a>
+                    <a href='<%= request.getContextPath()%>/vistas/solicitar-permiso.jsp' class='dropdown-link'>Solicitar permiso</a>
                     <br>
                     
                     <a href='' class='dropdown-link'>Mi historial</a>
