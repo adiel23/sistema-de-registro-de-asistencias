@@ -1,4 +1,4 @@
-package contoladores;
+package controladores;
 
 import java.io.IOException;
 import jakarta.servlet.ServletException;

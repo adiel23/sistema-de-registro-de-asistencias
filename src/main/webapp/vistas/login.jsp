@@ -15,7 +15,7 @@
 
     <div id="contenedor">
         <h2 id="titulo-formulario">SISTEMA DE REGISTRO DE ASISTENCIA</h2>
-        
+
         <form action="${pageContext.request.contextPath}/LoginServlet" method="post">
             <a href="https://www.facebook.com/profile.php?id=100064194878365">
                 <img src="../imgs/insam-logo.jpeg" alt="" id="logo">

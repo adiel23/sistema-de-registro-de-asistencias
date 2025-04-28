@@ -29,7 +29,7 @@
             </div>
                     
             <% if ("admin".equals(rol)) { %>
-                <a href="" class="nav-link">Manage Users</a>
+                <a href="usuarios.jsp" class="nav-link">Gestionar Usuarios</a>
             <% } %>
             
             <% if ("admin".equals(rol)) { %>
