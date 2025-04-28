@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package contoladores;
 
 import java.io.IOException;
@@ -18,10 +14,6 @@ import java.util.List;
 import modelos.Conexion;
 import modelos.Permiso;
 
-/**
- *
- * @author arthu
- */
 @WebServlet(name = "MostrarPermisosPendientesServlet", urlPatterns = {"/MostrarPermisosPendientesServlet"})
 public class MostrarPermisosPendientesServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -35,7 +27,8 @@ public class MostrarPermisosPendientesServlet extends HttpServlet {
                         SELECT p.id, p.fecha_solicitud, p.motivo, p.fecha_inicio, p.fecha_termino, p.estado,
                         u.nombre
                         FROM permisos p
-                        JOIN usuarios u ON p.id_usuario = u.id where p.estado = 'pendiente' """;
+                        JOIN usuarios u ON p.id_usuario = u.id where p.estado = 'pendiente' ORDER BY p.fecha_solicitud DESC """;
+         
             
             PreparedStatement stmt = conn.prepareStatement(sql);
             ResultSet rs = stmt.executeQuery();

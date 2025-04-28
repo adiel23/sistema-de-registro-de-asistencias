@@ -30,6 +30,7 @@ public class LoginServlet extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("id", usuario.getId());
             session.setAttribute("rol", usuario.getRol());
+            session.setAttribute("nombre", usuario.getName());
             
             response.sendRedirect("vistas/home.jsp");
         } else {

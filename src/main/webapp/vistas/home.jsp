@@ -8,6 +8,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>Home</title>
+    <script src="https://kit.fontawesome.com/7792cd81ab.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="<%= request.getContextPath()%>/css/home.css">
     <link rel="stylesheet" href="<%= request.getContextPath() %>/css/header.css">
 </head>

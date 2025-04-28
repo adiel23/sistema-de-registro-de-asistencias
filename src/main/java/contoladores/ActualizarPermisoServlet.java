@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package contoladores;
 
 import java.io.IOException;
@@ -14,13 +10,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import modelos.Conexion;
 
-/**
- *
- * @author arthu
- */
 @WebServlet(name = "ActualizarPermisoServlet", urlPatterns = {"/ActualizarPermisoServlet"})
 public class ActualizarPermisoServlet extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException { 
@@ -38,8 +29,6 @@ public class ActualizarPermisoServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
         response.getWriter().write("ok");
-    
     }
 }

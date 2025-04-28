@@ -1,9 +1,3 @@
-<%-- 
-    Document   : historial-permisos-global
-    Created on : 20 abr 2025, 15:42:17
-    Author     : arthu
---%>
-
 <%@page import="modelos.Permiso"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -12,6 +6,7 @@
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <title>JSP Page</title>
+    <script src="https://kit.fontawesome.com/7792cd81ab.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href='<%= request.getContextPath() %>/css/header.css'>
     <link rel="stylesheet" href='<%= request.getContextPath() %>/css/historial-permisos-global.css'>
 </head>
@@ -74,6 +69,8 @@
             </tbody>
         </table>
     </div>
+            
+    <script src="<%= request.getContextPath()%>/js/home.js"> </script>
     
 </body>
 </html>

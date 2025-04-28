@@ -9,7 +9,8 @@
 </head>
 <body>
     <jsp:include page="header.jsp" />
-    <h2 id="title">Lista de Permisos</h2>
+    
+    <h2 id="title">Permisos Pendientes</h2>
     <table border="1">
         <tr>
             <th>ID</th>

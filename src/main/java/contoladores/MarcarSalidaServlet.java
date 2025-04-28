@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
 package contoladores;
 
 import java.io.IOException;
@@ -18,10 +14,6 @@ import java.sql.Time;
 import java.util.Calendar;
 import modelos.Conexion;
 
-/**
- *
- * @author arthu
- */
 @WebServlet(name = "MarcarSalidaServlet", urlPatterns = {"/MarcarSalidaServlet"})
 public class MarcarSalidaServlet extends HttpServlet {
 
@@ -43,7 +35,6 @@ public class MarcarSalidaServlet extends HttpServlet {
 
         try {
             // Conexión a la base de datos (ajustá tus datos)
-            Class.forName("com.mysql.cj.jdbc.Driver");
             Connection conn = Conexion.getConnection();
 
             // Actualizar la hora de salida
@@ -66,5 +57,4 @@ public class MarcarSalidaServlet extends HttpServlet {
             response.getWriter().println("Error al marcar salida: " + e.getMessage());
         }
     }
-
 }

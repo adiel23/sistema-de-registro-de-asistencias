@@ -1,19 +1,11 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelos;
-
-/**
- *
- * @author arthu
- */
 
 public class Usuario {
     private int id;
     private String username;
     private String password;
     private String rol;
+    private String name;
 
     public Usuario(int id, String username, String password, String rol) {
         this.id = id;
@@ -33,4 +25,12 @@ public class Usuario {
     
     public String getRol() {return rol;}
     public void setRol(String rol) {this.rol = rol;}
+    
+    public String getName() {
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
 }

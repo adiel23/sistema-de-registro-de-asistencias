@@ -1,12 +1,8 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package modelos;
 
 public class Permiso {
     private int id;
-    /* private int id_usuario */
+    
     private String fechaSolicitud;
     private String motivo;
     private String fechaInicio;
@@ -17,9 +13,6 @@ public class Permiso {
     // Getters y Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }
-
-    /* public int getIdUsuario() { return idUsuario; }
-    public void setIdUsuario(int idUsuario) { this.idUsuario = idUsuario; } */
 
     public String getFechaSolicitud() { return fechaSolicitud; }
     public void setFechaSolicitud(String fechaSolicitud) { this.fechaSolicitud = fechaSolicitud; }

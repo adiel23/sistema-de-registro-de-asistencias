@@ -24,7 +24,7 @@
                     <a href='<%= request.getContextPath()%>/vistas/solicitar-permiso.jsp' class='dropdown-link'>Solicitar permiso</a>
                     <br>
                     
-                    <a href='' class='dropdown-link'>Mi historial</a>
+                    <a href='<%= request.getContextPath()%>/HistorialPermisosPersonalServlet' class='dropdown-link'>Mi historial</a>
                 </div>
             </div>
                     
@@ -44,6 +44,8 @@
             <% } else { %>
                     <a href="" class="nav-link">Historial de Asistencia</a>
             <% } %>
+            
+            <a class="nav-link" href="<%= request.getContextPath()%>/LogoutServlet"><i class="fa-solid fa-right-from-bracket"></i></a>
             
         </nav>
         

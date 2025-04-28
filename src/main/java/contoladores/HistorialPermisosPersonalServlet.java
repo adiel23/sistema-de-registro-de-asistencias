@@ -1,55 +1,61 @@
 package contoladores;
+
 import java.io.IOException;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import modelos.Conexion;
 import modelos.Permiso;
-@WebServlet(name = "HistorialPermisosGlobalServlet", urlPatterns = {"/HistorialPermisosGlobalServlet"})
-public class HistorialPermisosGlobalServlet extends HttpServlet {
+
+@WebServlet(name = "HistorialPermisosPersonalServlet", urlPatterns = {"/HistorialPermisosPersonalServlet"})
+public class HistorialPermisosPersonalServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String docente = request.getParameter("docente");
+        
         String desde = request.getParameter("desde");
         String hasta = request.getParameter("hasta");
         String estado = request.getParameter("estado");
-
+        
+        HttpSession session = request.getSession();
+        
+        int userId = (Integer) session.getAttribute("id");
+        String userName = (String) session.getAttribute("name");
+        
         List<Permiso> permisos = new ArrayList<>();
+        
+        try (Connection conn = Conexion.getConnection()) {
+            StringBuilder sql = new StringBuilder("select * from permisos where id_usuario = ?");
 
-        try (Connection conn = Conexion.getConnection()) 
-        {
-            StringBuilder sql = new StringBuilder("SELECT p.*, u.nombre FROM permisos p JOIN usuarios u ON p.id_usuario = u.id WHERE 1=1");
-
-            if (docente != null && !docente.isEmpty()) {
-                sql.append(" AND u.nombre LIKE ?");
-            }
             if (desde != null && !desde.isEmpty()) {
-                sql.append(" AND p.fecha_solicitud >= ?");
+                sql.append(" AND fecha_solicitud >= ?");
             }
             if (hasta != null && !hasta.isEmpty()) {
-                sql.append(" AND p.fecha_solicitud <= ?");
+                sql.append(" AND fecha_solicitud <= ?");
             }
             if (estado != null && !estado.isEmpty()) {
-                sql.append(" AND p.estado = ?");
+                sql.append(" AND estado = ?");
             }
             
-            sql.append(" ORDER BY p.fecha_solicitud DESC");
+            sql.append(" ORDER BY fecha_solicitud DESC");
 
             PreparedStatement stmt = conn.prepareStatement(sql.toString());
-
+            
             int index = 1;
-            if (docente != null && !docente.isEmpty()) {
-                stmt.setString(index++, "%" + docente + "%");
-            }
+            
+            stmt.setInt(index++, userId);
+            
             if (desde != null && !desde.isEmpty()) {
                 stmt.setString(index++, desde);
             }
@@ -59,8 +65,9 @@ public class HistorialPermisosGlobalServlet extends HttpServlet {
             if (estado != null && !estado.isEmpty()) {
                 stmt.setString(index++, estado);
             }
-
-            ResultSet rs = stmt.executeQuery();
+            
+            ResultSet rs =  stmt.executeQuery();
+            
             while (rs.next()) {
                 Permiso permiso = new Permiso();
                 // Rellenar los datos del permiso desde el ResultSet
@@ -70,16 +77,19 @@ public class HistorialPermisosGlobalServlet extends HttpServlet {
                 permiso.setFechaInicio(rs.getString("fecha_inicio"));
                 permiso.setFechaTermino(rs.getString("fecha_termino"));
                 permiso.setEstado(rs.getString("estado"));
-                permiso.setNombre(rs.getString("nombre")); // <- esta viene de JOIN con usuarios
+                permiso.setNombre(userName); 
                 permisos.add(permiso);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace();
+            
+            System.out.println(permisos);
+                    
+        } catch (SQLException ex) {
+            Logger.getLogger(HistorialPermisosPersonalServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
-
+        
         request.setAttribute("permisos", permisos);
-        request.getRequestDispatcher("vistas/historial-permisos-global.jsp").forward(request, response);
+        request.getRequestDispatcher("vistas/historial-permisos-personal.jsp").forward(request, response);
+        
     }
 
 }
