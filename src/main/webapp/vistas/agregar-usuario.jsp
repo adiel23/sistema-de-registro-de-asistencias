@@ -1,5 +1,3 @@
---agregarUsuario.jsp--
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html>
@@ -12,8 +10,6 @@
         <input type="hidden" name="accion" value="agregar" />
         <label>Nombre:</label><br>
         <input type="text" name="nombre" required><br>
-        
-        
 
         <label>Usuario:</label><br>
         <input type="text" name="usuario" required><br>
