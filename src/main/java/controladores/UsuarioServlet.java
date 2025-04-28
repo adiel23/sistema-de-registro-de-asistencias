@@ -1,5 +1,4 @@
 //UsuarioServlet.java
-
 package controladores;
 
 import jakarta.servlet.ServletException;
@@ -13,8 +12,7 @@ import modelos.Conexion;
 
 @WebServlet("/UsuarioServlet")
 public class UsuarioServlet extends HttpServlet {
-    // ... aquí sigue el resto del código que ya tenías
-protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion") != null ? request.getParameter("accion") : "listar";
@@ -24,21 +22,22 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             switch (accion) {
                 case "listar":
                     List<Usuario> usuarios = dao.listarUsuarios();
+                    System.out.println("Usuarios encontrados: " + usuarios.size()); 
                     request.setAttribute("usuarios", usuarios);
-                    request.getRequestDispatcher("usuarios.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/usuarios.jsp").forward(request, response);
                     break;
 
-                case "editar":
+                      case "editar":
                     int idEditar = Integer.parseInt(request.getParameter("id"));
                     Usuario usuarioEditar = dao.obtenerUsuario(idEditar);
                     request.setAttribute("usuario", usuarioEditar);
-                    request.getRequestDispatcher("editarUsuario.jsp").forward(request, response);
+                    request.getRequestDispatcher("/vistas/editarUsuario.jsp").forward(request, response);
                     break;
 
                 case "eliminar":
                     int idEliminar = Integer.parseInt(request.getParameter("id"));
                     dao.eliminarUsuario(idEliminar);
-                    response.sendRedirect("UsuarioServlet?accion=listar");
+                    response.sendRedirect("UsuarioServlet?accion=listar&msg=eliminado");
                     break;
 
                 default:
@@ -54,7 +53,6 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String accion = request.getParameter("accion");
-
         UsuarioDAO dao = new UsuarioDAO(Conexion.getConnection());
 
         try {
@@ -65,14 +63,21 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
             usuario.setRol(request.getParameter("rol"));
             usuario.setBirthDate(java.sql.Date.valueOf(request.getParameter("fechaNacimiento")));
 
+            // Validación básica
+            if (usuario.getName() == null || usuario.getUsername() == null || usuario.getPassword() == null) {
+                request.setAttribute("error", "Todos los campos son obligatorios");
+                request.getRequestDispatcher("/vistas/agregarUsuario.jsp").forward(request, response);
+                return;
+            }
+
             if ("agregar".equals(accion)) {
                 dao.agregarUsuario(usuario);
-                response.sendRedirect("UsuarioServlet?accion=listar");
+                response.sendRedirect("UsuarioServlet?accion=listar&msg=agregado");
 
             } else if ("actualizar".equals(accion)) {
                 usuario.setId(Integer.parseInt(request.getParameter("id")));
                 dao.actualizarUsuario(usuario);
-                response.sendRedirect("UsuarioServlet?accion=listar");
+                response.sendRedirect("UsuarioServlet?accion=listar&msg=actualizado");
             }
         } catch (Exception e) {
             throw new ServletException("Error en UsuarioServlet (POST): " + e.getMessage(), e);

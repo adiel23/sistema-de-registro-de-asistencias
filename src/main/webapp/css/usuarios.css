@@ -1,0 +1,48 @@
+
+
+.contenedor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 20px;
+    text-align: center;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 10px 15px;
+}
+
+.enlaces-usuario {
+    text-decoration: none;
+    color: #007BFF;
+    margin: 10px;
+    display: inline-block;
+}
+
+.enlaces-usuario:hover {
+    text-decoration: underline;
+}
+
+.mensaje {
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.exito {
+    color: green;
+}
+
+.error {
+    color: red;
+}
+

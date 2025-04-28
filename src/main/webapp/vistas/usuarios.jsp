@@ -1,35 +1,70 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page import="java.util.List"%>
+<%@page import="modelos.Usuario"%>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %> 
 <!DOCTYPE html>
 <html>
 <head>
     <title>Lista de Usuarios</title>
+    
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/usuarios.css">
+
 </head>
 <body>
-    <h1>Usuarios Registrados</h1>
+    
+    <jsp:include page="header.jsp"/>
+        
+    <div class="contenedor">
+        <h1>Usuarios Registrados</h1>
 
-    <a href="agregarUsuario.jsp">➕ Agregar Usuario</a>
-    <table border="1" cellpadding="5">
-        <tr>
-            <th>ID</th>
-            <th>Nombre</th>
-            <th>Usuario</th>
-            <th>Fecha Nacimiento</th>
-            <th>Rol</th>
-            <th>Acciones</th>
-        </tr>
-        <c:forEach var="u" items="${usuarios}">
+        <% 
+            String msg = request.getParameter("msg");
+            if ("agregado".equals(msg)) {
+        %>
+            <p class="mensaje exito">✅ Usuario agregado exitosamente.</p>
+        <% 
+            } else if ("actualizado".equals(msg)) {
+        %>
+            <p class="mensaje exito">✅ Usuario actualizado exitosamente.</p>
+        <% 
+            } else if ("eliminado".equals(msg)) {
+        %>
+            <p class="mensaje error">🗑 Usuario eliminado correctamente.</p>
+        <% 
+            }
+        %>
+
+        <a href="<%= request.getContextPath() %>/vistas/agregarUsuario.jsp" class="enlaces-usuario">➕ Agregar Usuario</a>
+        
+        <table>
             <tr>
-                <td>${u.id}</td>
-                <td>${u.nombre}</td>
-                <td>${u.usuario}</td>
-                <td>${u.fechaNacimiento}</td>
-                <td>${u.rol}</td>
-                <td>
-                    <a href="UsuarioServlet?accion=editar&id=${u.id}">✏️ Editar</a> |
-                    <a href="UsuarioServlet?accion=eliminar&id=${u.id}" onclick="return confirm('¿Seguro que deseas eliminar este usuario?');">🗑️ Eliminar</a>
-                </td>
+                <th>ID</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Fecha Nacimiento</th>
+                <th>Rol</th>
+                <th>Acciones</th>
             </tr>
-        </c:forEach>
-    </table>
+            
+            <% 
+                List<Usuario> usuarios = (List<Usuario>) request.getAttribute("usuarios");
+                for (Usuario u : usuarios) {
+            %>
+                <tr>
+                    <td><%= u.getId() %></td>
+                    <td><%= u.getName() %></td>
+                    <td><%= u.getUsername() %></td>
+                    <td><%= u.getBirthDate() %></td>
+                    <td><%= u.getRol() %></td>
+                    <td>
+                        <a href="<%= request.getContextPath() %>/UsuarioServlet?accion=editar&id=<%= u.getId() %>" class="enlaces-usuario" >✏️ Editar</a>
+                        <a href="<%= request.getContextPath() %>/UsuarioServlet?accion=eliminar&id=<%= u.getId() %>" onclick="return confirm('¿Seguro que deseas eliminar este usuario?');" class="enlaces-usuario">🗑️ Eliminar</a>
+                    </td>
+                </tr>
+            <% 
+                }
+            %>
+        </table>
+    </div>
 </body>
 </html>
