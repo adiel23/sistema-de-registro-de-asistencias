@@ -29,7 +29,7 @@
         </div>
 
         <% if ("admin".equals(rol)) { %>
-            <a href="usuarios.jsp" class="nav-link">Gestionar usuarios</a>
+            <a href="<%= request.getContextPath() %>/UsuarioServlet" class="nav-link">Gestionar usuarios</a>
         <% } %>
 
         <% if ("admin".equals(rol)) { %>
