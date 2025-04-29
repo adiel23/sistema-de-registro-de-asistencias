@@ -5,8 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Historial Global de Asistencias</title>
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/consultar-historial-global.css">
 </head>
 <body>
+    
+    <jsp:include page="header.jsp"/>
 
 <h2>Historial Global de Asistencias</h2>
 

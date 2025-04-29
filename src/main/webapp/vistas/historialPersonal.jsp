@@ -5,10 +5,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Historial de Asistencia Personal</title>
-    <!-- Puedes agregar un archivo CSS aquí -->
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/header.css">
+    <link rel="stylesheet" href="<%= request.getContextPath() %>/css/consultar-historial-personal.css">
 </head>
 <body>
+    
+<jsp:include page="header.jsp"/>
 
 <h2>Historial de Asistencia Personal</h2>
 
