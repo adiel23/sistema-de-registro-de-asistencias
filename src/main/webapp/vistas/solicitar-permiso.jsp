@@ -1,8 +1,4 @@
-<%-- 
-    Document   : solicitar-permiso
-    Created on : 11 abr 2025, 7:32:24 a. m.
-    Author     : leidy
---%>
+
 <%@page import="modelos.Conexion"%>
 <%@ page import="java.sql.*, java.util.Date" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
