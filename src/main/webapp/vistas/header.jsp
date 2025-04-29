@@ -1,4 +1,5 @@
 <header>
+    <% Integer userId = (Integer) session.getAttribute("id"); %>
     <div id="logo-container">
         <h2>INSAM</h2>
     </div>
@@ -35,14 +36,16 @@
                 <p id="attendance-history-dropdown-toggle" class="dropdown-toggle">Historial de Asistencia</p>
 
                 <div id="attendance-history-dropdown-menu" class='dropdown-menu'>
-                    <a href="../AsistenciaServlet?action=historialPersonal&id_usuario=1" class="dropdown-link">Personal</a> <!-- correcto -->
+                    <a href="../AsistenciaServlet?action=historialPersonal&id_usuario=<%= userId %>" class="dropdown-link">Personal</a> <!-- correcto -->
                     <br>
                     <a href="../AsistenciaServlet?action=historialGlobal" classw='dropdown-link'>Usuarios</a> <!-- correcto -->
                     <br>
                 </div>
             </div>
-        <% } else { %>
-            <a href="../AsistenciaServlet?action=historialPersonal&id_usuario=1" class="nav-link">Historial de Asistencia</a> <!-- correcto -->
+        <% } else {  
+        %>
+            
+            <a href="../AsistenciaServlet?action=historialPersonal&id_usuario=<%= userId%> " class="nav-link">Historial de Asistencia</a> <!-- correcto -->
         <% } %>
     </nav>
 </header>

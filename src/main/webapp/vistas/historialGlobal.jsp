@@ -14,7 +14,7 @@
 <table border="1" cellpadding="10">
     <thead>
         <tr>
-            <th>ID Usuario</th>
+            <th>Nombre</th>
             <th>Fecha</th>
             <th>Hora Entrada</th>
             <th>Hora Salida</th>
@@ -27,7 +27,7 @@
                 for (modelos.Asistencia asistencia : asistencias) {
         %>
             <tr>
-                <td><%= asistencia.getIdUsuario() %></td>
+                <td><%= asistencia.getNombreUsuario() %></td>
                 <td><%= asistencia.getFecha() %></td>
                 <td><%= asistencia.getHoraEntrada() %></td>
                 <td><%= asistencia.getHoraSalida() %></td>

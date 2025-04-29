@@ -13,12 +13,13 @@
     <link rel="stylesheet" href="../css/header.css">
 </head>
 <body>
+   
     
     <jsp:include page="header.jsp"/>
 
     <%
         Integer userId = (Integer) session.getAttribute("id");
-
+        
         if (userId != null) {
             Date fechaHoy = new Date();
             SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");

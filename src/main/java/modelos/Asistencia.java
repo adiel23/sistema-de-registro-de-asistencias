@@ -13,6 +13,7 @@ public class Asistencia {
     private Date fecha; // Puedes cambiar esto a Timestamp si necesitas manejar fechas y horas completas
     private String horaEntrada;
     private String horaSalida;
+    private String nombreUsuario;
 
     // Constructor vacío
     public Asistencia() {
@@ -66,6 +67,14 @@ public class Asistencia {
 
     public void setHoraSalida(String horaSalida) {
         this.horaSalida = horaSalida;
+    }
+    
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+    
+    public void setNombreUsuario(String nombreUsuario){
+        this.nombreUsuario = nombreUsuario;
     }
 
     // Sobrescribir el método toString para facilitar la depuración
