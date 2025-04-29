@@ -21,17 +21,25 @@ public class LoginServlet extends HttpServlet {
         String username = request.getParameter("usuario");
         String password = request.getParameter("contrasenia");
 
-        Connection con = Conexion.getConnection();
-        UsuarioDAO usuarioDAO = new UsuarioDAO(con);
-        Usuario usuario = usuarioDAO.validarUsuario(username, password);
-        
-        if (usuario != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("id", usuario.getId());
-            session.setAttribute("rol", usuario.getRol());
-            response.sendRedirect("vistas/home.jsp");
-        } else {
-            response.sendRedirect("vistas/login.jsp?error=1");
+        try {
+            Connection con = Conexion.getConnection();
+            UsuarioDAO usuarioDAO = new UsuarioDAO(con);
+            Usuario usuario = usuarioDAO.validarUsuario(username, password);
+            
+            if (usuario != null) {
+                HttpSession session = request.getSession();
+                session.setAttribute("id", usuario.getId());
+                session.setAttribute("rol", usuario.getRol());
+                session.setAttribute("nombre", usuario.getName());
+                
+                response.sendRedirect("vistas/home.jsp"); // o home.jsp si existe
+            } else {
+                response.sendRedirect("vistas/login.jsp?error=1");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("vistas/login.jsp?error=2");
         }
     }
 }

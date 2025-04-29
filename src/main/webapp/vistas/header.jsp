@@ -25,6 +25,7 @@
                     <br>
                     
                     <a href='<%= request.getContextPath()%>/HistorialPermisosPersonalServlet' class='dropdown-link'>Mi historial</a>
+                    
                 </div>
             </div>
                     
